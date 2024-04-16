@@ -123,6 +123,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &83382278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 83382280}
+  - component: {fileID: 83382279}
+  m_Layer: 0
+  m_Name: MissilePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &83382279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83382278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91325df817e301742ac13c058929ee23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToPool: 10
+  missilePrefab: {fileID: 7354567885246832086, guid: ad8ce3bbbc49d1f42b8e98d1d0fbf5ab, type: 3}
+--- !u!4 &83382280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83382278}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.132529, y: 4.491283, z: -0.01621051}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &94217706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,7 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea0e258fe9b8624686e43504aae1d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tankSpeed: 1000
+  _tankSpeed: 100
   _tankMover: {fileID: 2143888396}
 --- !u!1 &1497782469
 GameObject:
@@ -1866,3 +1912,4 @@ SceneRoots:
   - {fileID: 281223480}
   - {fileID: 1211332911}
   - {fileID: 1592797607}
+  - {fileID: 83382280}

@@ -21,6 +21,11 @@ public class Shooter : MonoBehaviour
     {
         Vector3 _joystickInput = new Vector3(_turretController.Horizontal, _turretController.Vertical, 0f);
         angle = Mathf.Atan2(_joystickInput.y, _joystickInput.x) * Mathf.Rad2Deg;
+        if(angle < -20f)
+        {
+            angle = angle + 360;
+        }
+        angle = Mathf.Clamp(angle, -21f, 200f);
 
         if (_joystickInput.x != 0f && _joystickInput.y != 0f)
         {
@@ -37,8 +42,15 @@ public class Shooter : MonoBehaviour
 
     public void FireMissile()
     {
-        GameObject _currentMissile = Instantiate(_missile, _spawnPoint.position, _missileRotation);
-        _Missile = _currentMissile.GetComponent<Missile>();
-        _Missile.Launch(_power);
+        GameObject _currentMissile = MissilePool.instance.GetMissile();
+        if (_currentMissile != null)
+        {
+            _currentMissile.transform.rotation = _missileRotation;
+            _currentMissile.transform.position = _spawnPoint.transform.position;
+            _Missile = _currentMissile.GetComponent<Missile>();
+            _currentMissile.SetActive(true);
+            _Missile.Launch(_power);
+        }
+        
     }   
 }

@@ -11,7 +11,7 @@ public class TankMovement : MonoBehaviour
         _tankRigidbody = GetComponent<Rigidbody2D>();
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
         _movementFactor = _tankMover.Horizontal;
         if(_tankMover.Horizontal != 0)
@@ -22,7 +22,7 @@ public class TankMovement : MonoBehaviour
     
     private void MoveTank(float _movementFactor)
     {
-        Vector2 tankVelocity = new Vector2(_movementFactor * _tankSpeed * Time.deltaTime, 0f);
+        Vector2 tankVelocity = new Vector2(_movementFactor * _tankSpeed * Time.fixedDeltaTime, 0f);
         _tankRigidbody.velocity = tankVelocity;
     }
 }
