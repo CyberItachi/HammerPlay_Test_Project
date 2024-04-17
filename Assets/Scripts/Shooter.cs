@@ -1,13 +1,14 @@
+using System;
 using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
+    public static event Action<float> onShooterClicked;
     [SerializeField] FixedJoystick _turretController;
     [SerializeField] RectTransform _handle;
     [SerializeField] GameObject _missile;
     [SerializeField] Transform _spawnPoint;
     Transform _turret;
-    Missile _Missile;
     Quaternion _missileRotation;
     float _power = .1f;
     float angle;
@@ -47,9 +48,8 @@ public class Shooter : MonoBehaviour
         {
             _currentMissile.transform.rotation = _missileRotation;
             _currentMissile.transform.position = _spawnPoint.transform.position;
-            _Missile = _currentMissile.GetComponent<Missile>();
             _currentMissile.SetActive(true);
-            _Missile.Launch(_power);
+            onShooterClicked?.Invoke(_power);
         }
         
     }   

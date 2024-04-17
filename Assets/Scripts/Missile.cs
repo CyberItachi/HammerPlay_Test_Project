@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,11 +8,22 @@ public class Missile : MonoBehaviour
     [SerializeField] float _impulse, _missileLife;
     [SerializeField] ParticleSystem _missileExplode;
     SpriteRenderer _missileRenderer;
+    
 
     private void Awake()
     {
         this._missileBody = GetComponent<Rigidbody2D>();
         this._missileRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnEnable()
+    {
+        Shooter.onShooterClicked += Launch;
+    }
+
+    private void OnDisable()
+    {
+        Shooter.onShooterClicked -= Launch;
     }
 
     public void Launch(float _power)
